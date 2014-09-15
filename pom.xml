@@ -5,22 +5,22 @@
   <version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<easybatch.version>2.1.3</easybatch.version>
+		<easybatch.version>2.2.0</easybatch.version>
 	</properties>
   
 	<dependencies>  
 		<dependency>
-			<groupId>io.github.benas</groupId>
+			<groupId>org.easybatch</groupId>
 			<artifactId>easybatch-core</artifactId>
 			<version>${easybatch.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.github.benas</groupId>
+			<groupId>org.easybatch</groupId>
 			<artifactId>easybatch-flatfile</artifactId>
 			<version>${easybatch.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.github.benas</groupId>
+			<groupId>org.easybatch</groupId>
 			<artifactId>easybatch-jdbc</artifactId>
 			<version>${easybatch.version}</version>
 		</dependency>

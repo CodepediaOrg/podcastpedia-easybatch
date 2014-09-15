@@ -2,9 +2,9 @@ package org.podcastpedia.batch.jobs.generatefilefromsuggestions;
 
 import java.sql.ResultSet;
 
-import io.github.benas.easybatch.core.api.Record;
-import io.github.benas.easybatch.core.api.RecordMapper;
-import io.github.benas.easybatch.jdbc.JdbcRecord;
+import org.easybatch.core.api.Record;
+import org.easybatch.core.api.RecordMapper;
+import org.easybatch.jdbc.JdbcRecord;
 
 public class CustomMapper implements RecordMapper<SuggestedPodcast>{
 
