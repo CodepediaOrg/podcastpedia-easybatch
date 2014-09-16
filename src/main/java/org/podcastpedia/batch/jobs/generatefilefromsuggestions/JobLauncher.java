@@ -16,17 +16,20 @@ import org.easybatch.jdbc.JdbcRecordReader;
 
 public class JobLauncher {
 
+	private static final String OUTPUT_FILE_HEADER = "FEED_URL; IDENTIFIER_ON_PODCASTPEDIA; CATEGORIES; LANGUAGE; MEDIA_TYPE; UPDATE_FREQUENCY; KEYWORDS; FB_PAGE; TWITTER_PAGE; GPLUS_PAGE; NAME_SUBMITTER; EMAIL_SUBMITTER";
+
 	public static void main(String[] args) throws Exception {
 		
-		 // create an embedded hsqldb in-memory database
+		 //connect to MySql Database 
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		Connection connection = DriverManager.getConnection(System.getProperty("db.url"), System.getProperty("db.user"), System.getProperty("db.pwd"));
 		 
 		FileWriter fileWriter = new FileWriter(getOutputFilePath());
-		 
+		fileWriter.write(OUTPUT_FILE_HEADER + "\n"); 
+		
 		// Build an easy batch engine
 		EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
-		.registerRecordReader(new JdbcRecordReader(connection, "SELECT * FROM ui_suggested_podcasts WHERE insertion_date >= STR_TO_DATE(\'" + args[0] + "\', \'%Y-%m-%d %h:%i\')" ))
+		.registerRecordReader(new JdbcRecordReader(connection, "SELECT * FROM ui_suggested_podcasts WHERE insertion_date >= STR_TO_DATE(\'" + args[0] + "\', \'%Y-%m-%d %H:%i\')" ))
 		.registerRecordMapper(new CustomMapper())
 		.registerRecordProcessor(new Processor(fileWriter))
 		.build();
@@ -44,8 +47,8 @@ public class JobLauncher {
 		Date now = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(now);
-		int kalendarWoche = calendar.get(Calendar.WEEK_OF_YEAR);
-		String targetDirPath = System.getProperty("output.directory.base") + String.valueOf(kalendarWoche);
+		int weeknum = calendar.get(Calendar.WEEK_OF_YEAR);
+		String targetDirPath = System.getProperty("output.directory.base") + String.valueOf(weeknum);
 		File targetDirectory = new File(targetDirPath);
 		if(!targetDirectory.exists()){
 			boolean created = targetDirectory.mkdir();
@@ -54,7 +57,7 @@ public class JobLauncher {
 			}
 		}
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm");
-		String outputFileName = "suggestedPodcasts " + dateFormat.format(now) + ".in";
+		String outputFileName = "suggestedPodcasts " + dateFormat.format(now) + ".csv";
 		String filePath = targetDirPath + "/" + outputFileName;
 		return filePath;
 	}
