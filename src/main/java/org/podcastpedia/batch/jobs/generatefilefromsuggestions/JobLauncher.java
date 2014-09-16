@@ -43,12 +43,13 @@ public class JobLauncher {
 	}
 
 	private static String getOutputFilePath() throws Exception {
-		//output csv file
+		
+		//create if not existent a "weeknum" directory in the given "output.directory.base" directory
 		Date now = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(now);
 		int weeknum = calendar.get(Calendar.WEEK_OF_YEAR);
-		String targetDirPath = System.getProperty("output.directory.base") + String.valueOf(weeknum);
+		String targetDirPath = System.getProperty("output.directory.base") + String.valueOf(weeknum);		
 		File targetDirectory = new File(targetDirPath);
 		if(!targetDirectory.exists()){
 			boolean created = targetDirectory.mkdir();
@@ -56,9 +57,12 @@ public class JobLauncher {
 				throw new Exception("Target directory could not be created"); 
 			}
 		}
+		
+		//build the file name based on current time to be placed in the "weeknum" directory  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm");
 		String outputFileName = "suggestedPodcasts " + dateFormat.format(now) + ".csv";
-		String filePath = targetDirPath + "/" + outputFileName;
+		
+		String filePath = targetDirPath + "/" + outputFileName;		
 		return filePath;
 	}
 
