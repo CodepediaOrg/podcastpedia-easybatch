@@ -12,7 +12,7 @@ public class CustomMapper implements RecordMapper<SuggestedPodcast>{
 	@Override
 	public SuggestedPodcast mapRecord(Record record) throws Exception {
         JdbcRecord jdbcRecord = (JdbcRecord) record;
-        ResultSet resultSet = jdbcRecord.getRawContent();
+        ResultSet resultSet = jdbcRecord.getPayload();
         
         SuggestedPodcast response = new SuggestedPodcast();
         response.setMetadataLine(resultSet.getString("metadata_line"));
