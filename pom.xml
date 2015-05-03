@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<easybatch.version>2.2.0</easybatch.version>
+		<easybatch.version>3.0.1</easybatch.version>
 	</properties>
   
 	<dependencies>  
@@ -29,6 +29,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.31</version>
-		</dependency>		
+		</dependency>
 	</dependencies>  
 </project>
