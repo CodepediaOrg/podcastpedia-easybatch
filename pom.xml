@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<easybatch.version>3.0.0</easybatch.version>
+		<easybatch.version>3.0.1</easybatch.version>
 	</properties>
   
 	<dependencies>  
