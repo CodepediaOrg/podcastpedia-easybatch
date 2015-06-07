@@ -2,12 +2,19 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.podcastpedia</groupId>
   <artifactId>podcastpedia-easybatch</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
 
 	<properties>
 		<easybatch.version>3.0.1</easybatch.version>
 	</properties>
-  
+
+	<scm>
+		<connection>scm:git:https://github.com/PodcastpediaOrg/podcastpedia-easybatch.git</connection>
+		<developerConnection>scm:git:https://github.com/PodcastpediaOrg/podcastpedia-easybatch.git</developerConnection>
+		<url>http://github.com/PodcastpediaOrg/podcastpedia-easybatch</url>
+	  <tag>podcastpedia-easybatch-0.0.1</tag>
+  </scm>
+
 	<dependencies>  
 		<dependency>
 			<groupId>org.easybatch</groupId>
@@ -29,6 +36,19 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.31</version>
-		</dependency>
-	</dependencies>  
+		</dependency>		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
