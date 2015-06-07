@@ -10,8 +10,8 @@
 
 	<scm>
 		<connection>scm:git:git://github.com/PodcastpediaOrg/podcastpedia-easybatch.git</connection>
-		<developerConnection>scm:git:git://github.com/PodcastpediaOrg/podcastpedia-easybatch.git</developerConnection>
-		<url>http://github.com/PodcastpediaOrg/podcastpedia-easybatch</url>
+		<developerConnection>scm:git:git@github.com:PodcastpediaOrg/podcastpedia-easybatch.git</developerConnection>
+		<url>https://github.com/PodcastpediaOrg/podcastpedia-easybatch</url>
 	  <tag>podcastpedia-easybatch-0.0.1</tag>
   </scm>
 
